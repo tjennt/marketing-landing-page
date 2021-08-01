@@ -1,0 +1,413 @@
+@mixin font-size($sizeValue, $sizeDefault: 16px) {
+    $target: ($sizeValue / $sizeDefault) * 1rem;
+    font-size: $target;
+  }
+  
+  @mixin hover() {
+    &:not([disabled]):hover {
+      @content;
+    }
+  }
+  
+  @mixin hover-focus() {
+    &:hover,
+    &:focus {
+      @content;
+    }
+  }
+  
+  @mixin hover-focus-active() {
+    &:hover,
+    &:focus,
+    &:active {
+      @content;
+    }
+  }
+  
+  $mobile-width: 480px;
+  $tablet-width: 768px;
+  $desktop-width: 1024px;
+  @mixin mobile {
+    @media (max-width: #{$mobile-width - 1px}) {
+      @content;
+    }
+  }
+  @mixin mobile_tablet {
+    @media (max-width: #{$desktop-width - 1px}) {
+      @content;
+    }
+  }
+  @mixin tablet_under {
+    @media (max-width: #{$tablet-width - 1px}) {
+      @content;
+    }
+  }
+  @mixin tablet {
+    @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+      @content;
+    }
+  }
+  @mixin desktop {
+    @media (min-width: #{$desktop-width}) {
+      @content;
+    }
+  }
+  
+  @function to-bool($value) {
+    @if not $value or $value == "" or $value == 0 {
+      @return false;
+    }
+    @return true;
+  }
+  
+  @function to-list($value) {
+    @return if(type-of($value) != list, ($value), $value);
+  }
+  
+  @function to-string($value) {
+    @return inspect($value);
+  }
+  
+  @function strip-units($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  
+  @function str-replace($string, $search, $replace: "") {
+    $index: str-index($string, $search);
+  
+    @if $index {
+      @return str-slice($string, 1, $index - 1) + $replace +
+        str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+  
+    @return $string;
+  }
+  
+  @function strip-whitespace($string) {
+    @return str-replace($string, " ", "");
+  }
+  
+  $browsers: (webkit ms moz);
+  
+  @function em-size($size, $base: $base-font-size) {
+    @if (unitless($size) == false) {
+      $size: strip-units($size);
+    }
+    $emsize: $size / strip-units($base);
+    @return #{$emsize}em;
+  }
+  
+  @mixin prefix($str, $value: none) {
+    @each $browser in $browsers {
+      -#{$browser}-#{$str}: $value;
+    }
+    #{$str}: $value;
+  }
+  
+  @mixin prefix-attr($str, $value) {
+    @each $browser in $browsers {
+      #{$str}: -#{$browser}-#{$value};
+    }
+    #{$str}: $value;
+  }
+  
+  @mixin placeholder() {
+    &::-webkit-input-placeholder {
+      @content;
+    }
+    &:-moz-placeholder {
+      @content;
+    }
+    &::-moz-placeholder {
+      @content;
+    }
+    &:-ms-input-placeholder {
+      @content;
+    }
+  }
+  
+  @mixin scale($size_x: 1, $size_y: false) {
+    @if $size_y != false {
+      @each $browser in $browsers {
+        -#{$browser}-transform: scale($size_x, $size_y);
+      }
+      transform: scale($size_x, $size_y);
+    } @else {
+      @each $browser in $browsers {
+        -#{$browser}-transform: scale($size_x);
+      }
+      transform: scale($size_x);
+    }
+  }
+  
+  @mixin linear-gradient($start: #f3f3f3, $end: #fcfcfc, $direction: to bottom) {
+    *background: none;
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#{$start}', endColorstr='#{$end}');
+    background-image: -webkit-gradient(linear, $direction, right bottom, from($start), to($end));
+    @include prefix_attr(background-image, (linear-gradient($direction, $start, $end)));
+  }
+  
+  @mixin opacity($value) {
+    opacity: $value;
+    filter: alpha(opacity=#{($value * 100)});
+  }
+  
+  @mixin position($coords: "", $position: absolute, $zindex: auto) {
+    $length: length($coords);
+    position: $position;
+    z-index: $zindex;
+  
+    @if $length == 1 {
+      top: $coords;
+      left: $coords;
+      right: $coords;
+      bottom: $coords;
+    } @else if $length == 2 {
+      $vert: nth($coords, 1);
+      $hori: nth($coords, 2);
+      top: $vert;
+      left: $hori;
+      right: $hori;
+      bottom: $vert;
+    } @else if $length == 3 {
+      $top: nth($coords, 1);
+      $hori: nth($coords, 2);
+      $bottom: nth($coords, 3);
+      top: $top;
+      left: $hori;
+      right: $hori;
+      bottom: $bottom;
+    } @else if $length == 4 {
+      top: nth($coords, 1);
+      left: nth($coords, 4);
+      right: nth($coords, 2);
+      bottom: nth($coords, 3);
+    }
+  }
+  
+  @mixin triangle($direction: top, $size: 5px, $color: red) {
+    $factor: 0.6;
+    $borderwidth: "";
+    $bordercolor: "";
+    $bordersize: $size;
+  
+    @if unitless($size) {
+      $bordersize: #{$size}px;
+    }
+  
+    @if $direction == top {
+      $borderwidth: 0 #{$bordersize / 2} #{$bordersize * $factor} #{$bordersize / 2};
+      $bordercolor: transparent transparent $color transparent;
+    } @else if $direction == right {
+      $borderwidth: #{$bordersize / 2} 0 #{$bordersize / 2} #{$bordersize * $factor};
+      $bordercolor: transparent transparent transparent $color;
+    } @else if $direction == bottom {
+      $borderwidth: #{$bordersize * $factor} #{$bordersize / 2} 0 #{$bordersize / 2};
+      $bordercolor: $color transparent transparent transparent;
+    } @else if $direction == left {
+      $borderwidth: #{$bordersize / 2} #{$bordersize * $factor} #{$bordersize / 2} 0;
+      $bordercolor: transparent $color transparent transparent;
+    }
+  
+    width: 0;
+    height: 0;
+    border: {
+      style: solid;
+      width: $borderwidth;
+      color: $bordercolor;
+    }
+  }
+  
+  @mixin keyframes($name) {
+    @-moz-keyframes #{$name} {
+      @content;
+    }
+    @-webkit-keyframes #{$name} {
+      @content;
+    }
+    @-ms-keyframes #{$name} {
+      @content;
+    }
+    @keyframes #{$name} {
+      @content;
+    }
+  }
+  
+  @mixin sprite($left: left, $top: top, $color: transparent, $image: "") {
+    @if ($image != "") {
+      $mainsprite: $image;
+    }
+    @if (type-of($left) == number) {
+      $left: #{$left}px;
+    }
+    @if (type-of($top) == number) {
+      $top: #{$top}px;
+    }
+    background: {
+      image: url("#{$mainsprite}");
+      repeat: no-repeat;
+      position: #{$left} #{$top};
+      color: $color;
+    }
+  }
+  
+  @mixin mybutton-color($color) {
+    background-color: $color;
+    border: {
+      width: 1px;
+      style: solid;
+      @if lightness($color) > 95% {
+        color: darken($color, 25%);
+      } @else {
+        color: lighten($color, 25%);
+      }
+    }
+  
+    &:hover {
+      @if lightness($color) > 95% {
+        background-color: darken($color, 10%);
+        border-color: darken($color, 5%);
+      } @else if (lightness($color) < 5%) {
+        border-color: lighten($color, 35%);
+        background-color: lighten($color, 25%);
+      } @else {
+        background-color: darken($color, 10%);
+        border-color: $color;
+      }
+    }
+  }
+  
+  @mixin mybutton($color, $width: 100%) {
+    @include prefix(appearance, none);
+    @include prefix(box-sizing, border-box);
+    @include prefix(transition, (all 170ms ease));
+    @include mybutton-color($color);
+    display: inline-block;
+    cursor: pointer;
+    outline: 0 none;
+    padding: 0.9em 1.9em;
+    text-align: center;
+    min-width: $width;
+    font-family: inherit;
+  }
+  
+  @function fix-ie10-flex-value($value) {
+    $dash-index: str-index($value, "-");
+    @if $dash-index {
+      @return str-slice($value, $dash-index + 1);
+    } @else {
+      @return $value;
+    }
+  }
+  
+  @mixin flexbox(
+    $display: flex,
+    $direction: row,
+    $wrap: nowrap,
+    $main-axis-align: normal,
+    //
+    $cross-axis-align: stretch,
+    $align-content: stretch
+  ) {
+    // set display
+    @if $display != flex {
+      $display: inline-flex;
+    }
+    display: block; // ie9 support
+    display: -ms-#{$display}box;
+    display: -webkit-#{$display};
+    display: #{$display};
+    // set flex flow
+    -ms-flex-wrap: #{$wrap};
+    -ms-flex-direction: #{$direction};
+    @include prefix(flex-flow, (#{$direction} #{$wrap}));
+    // set justify-content
+    -ms-flex-pack: fix-ie10-flex-value($main-axis-align);
+    @include prefix(justify-content, $main-axis-align);
+    // set align-items
+    -ms-flex-align: fix-ie10-flex-value($cross-axis-align);
+    @include prefix(align-items, $cross-axis-align);
+    // set align-content
+    -ms-flex-line-pack: fix-ie10-flex-value($align-content);
+    @include prefix(align-content, $align-content);
+  }
+  
+  @mixin flex($order: 0, $flex-grow: 0, $flex-shrink: 1, $flex-basis: auto, $align-self: auto) {
+    @include prefix(flex, (#{$flex-grow} #{$flex-shrink} #{$flex-basis}));
+    -ms-flex-item-align: fix-ie10-flex-value($align-self);
+    @include prefix(align-self, $align-self);
+    @if $order != 0 {
+      order: $order;
+    }
+  }
+  
+  @mixin selection() {
+    ::-moz-selection {
+      @content;
+    }
+    ::selection {
+      @content;
+    }
+  }
+  
+  @mixin columns($columns: 2, $width: auto, $gap: 10px, $ruler: none, $fill: balance) {
+    // $ruler is usually described akin the border shorthand, ie: 1px solid #000
+    @include prefix(columns, ($columns $width));
+    @include prefix(column-gap, $gap);
+    @include prefix(column-rule, $ruler);
+    @include prefix(column-fill, $fill);
+  }
+  
+  ////
+  // PROJECT SPECIFIC MIXINS
+  ////
+  @mixin scrollbar($thumb, $track) {
+    @extend %scrollbar;
+  
+    scrollbar-color: $thumb $track;
+    scrollbar-width: thin;
+  
+    &::-webkit-scrollbar-track {
+      background-color: $track;
+      border-color: $track;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $thumb;
+    }
+  }
+  
+  @mixin rangethumb($size) {
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      margin-top: (0 - $size / 2);
+      @content;
+    }
+    &::-moz-range-thumb {
+      @content;
+    }
+    &::-ms-thumb {
+      @content;
+    }
+  }
+  
+  @mixin rangetrack {
+    &::-webkit-slider-runnable-track {
+      @content;
+    }
+    &::-moz-range-track {
+      @content;
+    }
+    &::-ms-track {
+      @content;
+    }
+  }
+  
+  @mixin rangeprogress {
+    &::-moz-range-progress {
+      @content;
+    }
+    &::-ms-fill-lower {
+      @content;
+    }
+  }
+  

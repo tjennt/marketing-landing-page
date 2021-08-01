@@ -1,0 +1,143 @@
+// When printing
+@mixin print {
+    @media only print {
+      @content;
+    }
+  }
+  
+  // When window width is between $min-width and $max-width
+  @mixin window-width-between($min-width, $max-width) {
+    @if $min-width > $max-width {
+      // if the arguments are entered in wrong order, fix it
+      $tmp-width: $min-width;
+      $min-width: $max-width;
+      $max-width: $tmp-width;
+    }
+    @media (max-width: $max-width) and (min-width: $min-width) {
+      @content;
+    }
+  }
+  // When window is wider than $width
+  @mixin window-width-greater-than($width) {
+    @media (min-width: $width) {
+      @content;
+    }
+  }
+  
+  // When window is thinner than $width
+  @mixin window-width-less-than($width) {
+    @media (max-width: $width) {
+      @content;
+    }
+  }
+  // When window height is between $min-width and $max-width
+  @mixin window-height-between($min-height, $max-height) {
+    @if $min-height > $max-height {
+      // if the arguments are entered in wrong order, fix it
+      $tmp-height: $min-height;
+      $min-height: $max-height;
+      $max-height: $tmp-height;
+    }
+    @media (max-height: $max-height) and (min-height: $min-height) {
+      @content;
+    }
+  }
+  
+  // When window is shorter than $height
+  @mixin window-height-less-than($height) {
+    @media (max-height: $height) {
+      @content;
+    }
+  }
+  
+  // When window is taller than $height
+  @mixin window-height-greater-than($height) {
+    @media (min-height: $height) {
+      @content;
+    }
+  }
+  
+  // When showing in fullscreen
+  @mixin fullscreen {
+    &:-webkit-full-screen {
+      @content;
+    }
+    &:-moz-full-screen {
+      @content;
+    }
+    &:-ms-fullscreen {
+      @content;
+    }
+    &:fullscreen {
+      @content;
+    }
+  }
+  
+  // When showing in portrait mode
+  @mixin portrait {
+    @media (orientation: portrait) {
+      @content;
+    }
+  }
+  
+  // When showing in landscape mode (the phone is tilted)
+  @mixin landscape {
+    @media (orientation: landscape) {
+      @content;
+    }
+  }
+  
+  // For WebKit based browsers
+  @mixin webkit {
+    @media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+      .selector:not(*:root) {
+        @content;
+      }
+    }
+  }
+  
+  // For Mozilla based browsers
+  @mixin mozilla {
+    @-moz-document url-prefix() {
+      @supports (animation: calc(0s)) {
+        @content;
+      }
+    }
+  }
+  
+  // For Edge
+  @mixin edge {
+    @supports (-ms-ime-align: auto) {
+      @content;
+    }
+  }
+  
+  // For IE11
+  @mixin ie11 {
+    _:-ms-fullscreen,
+    :root & {
+      @content;
+    }
+  }
+  
+  // For IE10+
+  @mixin ie10-11 {
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      @content;
+    }
+  }
+  
+  // For IE9 to IE10
+  @mixin ie9-10 {
+    @media screen and (min-width: 0 \0) {
+      @content;
+    }
+  }
+  
+  // For IE9
+  @mixin ie9 {
+    HTML.ie9 & {
+      @content;
+    }
+  }
+  
