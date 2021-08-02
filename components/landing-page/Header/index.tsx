@@ -1,5 +1,5 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react";
+import Link from "next/link";
 
 export default function Header() {
   return (
@@ -23,8 +23,13 @@ export default function Header() {
         <Link href="#">
           <a className="font-semibold text-secondary">SCREENS</a>
         </Link>
-        <button type="button" className="text-primary font-semibold border-2 rounded-3xl py-3 px-6 hover:bg-primary hover:text-while focus:ring-4 focus:ring-primary-light duration-300">GET STARTED</button>
+        <button
+          type="button"
+          className="text-primary font-semibold border-2 rounded-3xl py-3 px-6 hover:bg-primary hover:text-while focus:ring-4 focus:ring-primary-light duration-300"
+        >
+          GET STARTED
+        </button>
       </div>
     </div>
-  )
+  );
 }

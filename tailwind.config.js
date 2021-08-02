@@ -18,6 +18,11 @@ module.exports = {
           DEFAULT: '#4b4573',
           dark: "#37325c"
         },
+        gray: {
+          light: "#fffafa",
+          DEFAULT: "#f5f5f5",
+          dark: "#969696"
+        },
         while: {
           DEFAULT: '#ffffff'
         },
