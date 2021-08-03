@@ -69,8 +69,8 @@ export default function Header() {
                 <Menu as="div" className="ml-3 relative">
                   {({ open }) => (
                     <div className="flex items-center space-x-10 hidden md:block md:ml-6">
-                      {navigation.map((item: any) => (
-                        <Link href={item.href}>
+                      {navigation.map((item: any, index: number) => (
+                        <Link href={item.href} key={index}>
                           <a className="font-semibold text-secondary">
                             {item.name}
                           </a>
@@ -91,9 +91,9 @@ export default function Header() {
 
           <Disclosure.Panel className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {navigation.map((item) => (
+              {navigation.map((item: any, index: number) => (
                 <a
-                  key={item.name}
+                  key={index}
                   href={item.href}
                   className={classNames(
                     item.current
