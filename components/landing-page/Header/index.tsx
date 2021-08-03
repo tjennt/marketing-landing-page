@@ -69,9 +69,11 @@ export default function Header() {
                 <Menu as="div" className="ml-3 relative">
                   {({ open }) => (
                     <div className="flex items-center space-x-10 hidden md:block md:ml-6">
-                      {navigation.map((item: any)=> (
+                      {navigation.map((item: any) => (
                         <Link href={item.href}>
-                          <a className="font-semibold text-secondary">{item.name}</a>
+                          <a className="font-semibold text-secondary">
+                            {item.name}
+                          </a>
                         </Link>
                       ))}
                       <button
@@ -104,12 +106,12 @@ export default function Header() {
                   {item.name}
                 </a>
               ))}
-                                    <button
-                        type="button"
-                        className="btn btn-out-primary btn-rounded-py font-semibold hover:bg-primary hover:text-while"
-                      >
-                        GET STARTED
-                      </button>
+              <button
+                type="button"
+                className="btn btn-out-primary btn-rounded-py font-semibold hover:bg-primary hover:text-while"
+              >
+                GET STARTED
+              </button>
             </div>
           </Disclosure.Panel>
         </>
