@@ -1,9 +1,9 @@
-<svg width="1038" height="615" viewBox="0 0 1038 615" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="1037" height="615" transform="matrix(-1 0 0 1 1038 0)" fill="#F5F5F5"/>
-<rect width="1037" height="615" transform="matrix(-1 0 0 1 1038 0)" fill="url(#paint0_linear)" fill-opacity="0.2"/>
-<path d="M326 471C135.6 486.2 29.6667 392 0.5 343V615H1037L727 519C672.667 496.667 516.4 455.8 326 471Z" fill="white"/>
+<svg width="1999" height="1000" viewBox="0 0 1999 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1998.07" height="1000" transform="matrix(-1 0 0 1 1999 0)" fill="#F5F5F5"/>
+<rect width="1998.07" height="1000" transform="matrix(-1 0 0 1 1999 0)" fill="url(#paint0_linear)" fill-opacity="0.2"/>
+<path d="M739.514 738.355C308.901 801.475 68.3666 615.752 1.92582 515L0 1000H1999V772.584C1758.59 734.874 1170.13 675.236 739.514 738.355Z" fill="white"/>
 <defs>
-<linearGradient id="paint0_linear" x1="518.5" y1="0" x2="518.5" y2="615" gradientUnits="userSpaceOnUse">
+<linearGradient id="paint0_linear" x1="999.037" y1="0" x2="999.037" y2="1000" gradientUnits="userSpaceOnUse">
 <stop offset="0.0416667" stop-color="#F5F5F5"/>
 <stop offset="0.848958" stop-color="#EDB7AD" stop-opacity="0.5"/>
 <stop offset="1" stop-color="#E66565" stop-opacity="0"/>

@@ -37,7 +37,7 @@ export default function BlockFour() {
   return (
     <div className="grid grid-cols-1 gap-4 md:px-16 md:grid-cols-3 px-3 xl:px-0 sm:px-3">
       <div className="space-y-8 md:col-span-1">
-        <h1 className="text-5xl font-bold">Awesome app for business to grow</h1>
+        <h1 className="text-3xl font-bold md:text-3xl lg:sm:text-5xl">Awesome app for business to grow</h1>
         <p className="text-gray-dark font-semibold">
           Duis aute irure dolor in reprehend in voluptate velit cill cillum
           cupidatat non proident sunt in cillum Lorem, ipsum dolor sit amet
@@ -48,8 +48,8 @@ export default function BlockFour() {
         </button>
       </div>
       <div className="w-full grid grid-cols-2 gap-10 md:col-span-2">
-        {blocks.map((item: Block) => (
-          <div className="text-center">
+        {blocks.map((item: Block, index: number) => (
+          <div key={index} className="text-center">
             <Image src={item.image} width={width} height={height} />
             <p className="text-xl text-secondary font-semibold">{item.name}</p>
             <span>{item.value}</span>

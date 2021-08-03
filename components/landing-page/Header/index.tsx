@@ -3,9 +3,9 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <div className="flex justify-between mt-3">
+    <div className="flex justify-between mt-3 hidden sm:block">
       <div className="order-first">
-        <h1 className="text-4xl text-primary font-bold">MIJUAPP</h1>
+        <h1 className="text-4xl text-primary font-bold">WJTAPP</h1>
       </div>
       <div className="order-last flex items-center space-x-10">
         <Link href="#">

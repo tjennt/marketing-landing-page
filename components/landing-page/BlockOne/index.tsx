@@ -8,7 +8,7 @@ export default function BlockOne() {
   return (
     <div className="grid grid-cols-1 gap-4 space-x-3 items-center md:grid-cols-5 px-3 xl:px-0">
       <div className="col-span-2 space-y-8">
-        <h1 className="text-5xl font-bold">
+        <h1 className="text-3xl font-bold sm:text-5xl">
           Setup your Mijuapp app account in no-time!
         </h1>
         <p>

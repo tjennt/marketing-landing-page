@@ -24,8 +24,10 @@ const data = [
 export default function BlockFive() {
   return (
     <div className="grid grid-cols-1 gap-6 pt-20 md:px-16 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 px-3 xl:px-0 sm:px-3">
-      {data.map((item: Block) => (
-        <div className="bg-gray shadow-xl text-center py-20 rounded-3xl cursor-pointer hover:ring-4 hover:ring-primary-light duration-300">
+      {data.map((item: Block, index: number) => (
+        <div key={index} className="bg-gray shadow-xl text-center py-20 rounded-3xl cursor-pointer hover:ring-4 hover:ring-primary-light duration-300"
+        style={{background: `url('../../../../assets/images/landing-page/bg-item-block-5.svg')`}}
+        >
           <p className="text-4xl text-secondary font-semibold">{item.value}K</p>
           <p className="text-xl font-medium text-gray-dark">{item.name}</p>
           <div className="border-b-8 border-primary w-16 pt-3 md:border-b-4"></div>

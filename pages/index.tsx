@@ -22,7 +22,7 @@ export default function Home() {
       <BlockFour />
       <BlockFive />
       <div className="flex justify-center py-10">
-          <a target="_blank" href="https://github.com/tjennt">
+          <a target="_blank" rel="noopener" href="https://github.com/tjennt">
               <FaGithub size={40} />
           </a>
       </div>

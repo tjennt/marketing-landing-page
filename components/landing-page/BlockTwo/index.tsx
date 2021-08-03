@@ -31,18 +31,17 @@ export default function BlockTwo() {
   const [width, height] = [170, 170];
   return (
     <div
-      className="space-x-3 bg-no-repeat bg-bottom"
+      className="relative"
       style={{
-        minHeight: '416px',
-        background: "url('../../../assets/images/landing-page/bg-block-2.svg')"
+        marginBottom: 0
       }}
     >
       <h1 className="font-bold text-2xl text-center">
         Features loved by our users!
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {blocks.map((item: Block) => (
-          <div className="col-span-1 text-center">
+        {blocks.map((item: Block, index: number) => (
+          <div key={index} className="col-span-1 text-center">
             <Image src={item.image} width={width} height={height} />
             <h2 className="text-secondary font-bold text-xl">{item.name}</h2>
             <p className="text-gray-dark">{item.value}</p>
@@ -54,7 +53,10 @@ export default function BlockTwo() {
           BROWESE ALL FEATURES
         </button>
       </div>
-      {/* <Image src={svgBgBlock2} className="" /> */}
+      <div className="h-16 lg:h-40 sm:h-24"></div>
+      <div className="absolute bottom-0" style={{zIndex: -1}}>
+        <Image src={svgBgBlock2} />
+      </div>
     </div>
   );
 }
