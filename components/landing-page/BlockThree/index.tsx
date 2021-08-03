@@ -33,7 +33,7 @@ export default function BlockThree() {
           </p>
         </div>
       </div>
-      <div className="sm:h-16 md:40"></div>
+      <div className="sm:h-24 md:40 lg:h-48"></div>
     </div>
   );
 }

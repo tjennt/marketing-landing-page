@@ -18,7 +18,7 @@ export default function BlockOne() {
         <div className="space-x-3 lg:space-x-3 md:space-y-3 md:space-x-0 sm:space-x-3">
           <button
             type="button"
-            className="bg-primary text-while font-semibold py-3 px-7 rounded-3xl focus:ring-4 focus:ring-primary-light duration-300"
+            className="btn btn-primary btn-rounded-py font-semibold"
           >
             DOWNLOAD
             <FaDownload size="1em" className="inline mb-1 ml-1 text-while" />
@@ -26,7 +26,7 @@ export default function BlockOne() {
 
           <button
             type="button"
-            className="text-secondary font-semibold border-2 py-3 px-7 rounded-3xl focus:ring-4 focus:ring-secondary-light duration-300"
+            className="btn btn-out-secondary btn-rounded-py font-semibold"
           >
             PLAY VIDEO
             <FiPlay size="1em" className="inline mb-1 ml-1 text-secondary" />

@@ -1,0 +1,24 @@
+.btn {
+    @apply focus:ring-4 duration-300;
+}
+
+.btn-primary {
+    @apply bg-primary border-2 border-while text-while focus:ring-primary-light;
+}
+
+.btn-out-primary {
+    @apply bg-while border-2 text-primary focus:ring-primary-light;
+}
+
+.btn-secondary {
+    @apply bg-secondary border-2 border-while text-while focus:ring-secondary-light;
+}
+
+.btn-out-secondary {
+    @apply bg-while border-2 text-secondary focus:ring-secondary-light;
+}
+
+
+.btn-rounded-py {
+    @apply rounded-3xl py-3 px-7;
+}

@@ -49,7 +49,7 @@ export default function BlockTwo() {
         ))}
       </div>
       <div className="flex justify-center mt-10">
-        <button className="text-primary font-semibold border-2 rounded-3xl py-2 px-6 focus:ring-4 focus:ring-primary-light duration-300">
+        <button className="btn btn-out-primary btn-rounded-py font-semibold hover:bg-primary hover:text-while">
           BROWESE ALL FEATURES
         </button>
       </div>

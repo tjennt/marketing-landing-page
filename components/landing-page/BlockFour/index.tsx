@@ -43,7 +43,7 @@ export default function BlockFour() {
           cupidatat non proident sunt in cillum Lorem, ipsum dolor sit amet
           consectetur adipisicing elit.
         </p>
-        <button className="bg-primary rounded-3xl text-while font-semibold py-3 px-8 focus:ring-4 focus:ring-primary-light duration-300">
+        <button className="btn btn-primary btn-rounded-py font-semibold">
           LEARN MORE
         </button>
       </div>
