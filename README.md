@@ -1,5 +1,6 @@
 # Marketing landing page - FREE
 ```
+- Typescript
 - Nextjs
 - Tailwindcss
 ```
